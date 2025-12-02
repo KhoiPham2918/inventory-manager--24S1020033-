@@ -2,7 +2,26 @@
 products = []
 
 def add_product():
-    pass
+    print("\n--- NHẬP HÀNG MỚI ---")
+    name = input("Nhập tên sản phẩm: ")
+    
+    try:
+        price = int(input("Nhập giá bán (VNĐ): "))
+        quantity = int(input("Nhập số lượng tồn kho: "))
+
+        if price < 0 or quantity < 0:
+             print("⚠️ Giá bán và Số lượng không được là số âm. Vui lòng thử lại.")
+             return
+        
+        products.append({
+            'name': name,
+            'price': price,
+            'qty': quantity
+        })
+        print(f" Đã nhập hàng thành công: {name} (SL: {quantity})")
+
+    except ValueError:
+        print(" Lỗi: Giá bán và Số lượng phải là các giá trị số hợp lệ.")
 
 def view_inventory():
     pass
