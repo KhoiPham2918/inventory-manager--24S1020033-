@@ -1,4 +1,3 @@
-# Biến lưu trữ danh sách sản phẩm
 products = []
 
 def add_product():
