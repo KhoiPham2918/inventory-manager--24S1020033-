@@ -24,7 +24,17 @@ def add_product():
         print(" Lỗi: Giá bán và Số lượng phải là các giá trị số hợp lệ.")
 
 def view_inventory():
-    pass
+    print("\n--- DANH SÁCH TỒN KHO ---")
+    if not products:
+        print("📦 Kho hàng trống. Vui lòng nhập hàng (Chọn chức năng 1).")
+        return
+
+    print(f"{'Tên Sản Phẩm':<20} | {'Giá Bán':>10} | {'Số Lượng':>10}")
+    print("-" * 45)
+
+    for product in products:
+        price_formatted = f"{product['price']:,}"
+        print(f"{product['name']:<20} | {price_formatted:>10} | {product['qty']:>10}")
 
 def check_low_stock():
     pass
