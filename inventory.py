@@ -10,7 +10,7 @@ def add_product():
         quantity = int(input("Nhập số lượng tồn kho: "))
 
         if price < 0 or quantity < 0:
-             print("⚠️ Giá bán và Số lượng không được là số âm. Vui lòng thử lại.")
+             print(" Giá bán và Số lượng không được là số âm. Vui lòng thử lại.")
              return
         
         products.append({
@@ -26,7 +26,7 @@ def add_product():
 def view_inventory():
     print("\n--- DANH SÁCH TỒN KHO ---")
     if not products:
-        print("📦 Kho hàng trống. Vui lòng nhập hàng (Chọn chức năng 1).")
+        print(" Kho hàng trống. Vui lòng nhập hàng (Chọn chức năng 1).")
         return
 
     print(f"{'Tên Sản Phẩm':<20} | {'Giá Bán':>10} | {'Số Lượng':>10}")
@@ -37,7 +37,21 @@ def view_inventory():
         print(f"{product['name']:<20} | {price_formatted:>10} | {product['qty']:>10}")
 
 def check_low_stock():
-    pass
+    print("\n--- CẢNH BÁO HẾT HÀNG (SL < 5) ---")
+    
+    low_stock_items = []
+    for product in products:
+        if product['qty'] < 5:
+            low_stock_items.append(product)
+
+    if not low_stock_items:
+        print("✨ Tuyệt vời! Tất cả sản phẩm đều có đủ hàng tồn kho (SL >= 5).")
+        return
+
+    print(f"{'Tên Sản Phẩm':<20} | {'Số Lượng':>10} | Ghi chú")
+    print("-" * 40)
+    for product in low_stock_items:
+        print(f"{product['name']:<20} | {product['qty']:>10} |  Cần nhập thêm!")
 
 def main():
     while True:
